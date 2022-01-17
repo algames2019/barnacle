@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo $HOME/.local/share/barnacle/main.py
+python $HOME/.local/share/barnacle/main.py "$@"
