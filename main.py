@@ -59,7 +59,7 @@ if __name__ == '__main__':
         parser.add_argument("--left", "-l", type=str, metavar="key", default="a", help="left key (default: a)")
         parser.add_argument("--right", "-r", type=str, default="s", metavar="key", help="right key (default: s)")
         parser.add_argument("--exit", "-e", type=str, default="m", metavar="key", help="exit key (default: m)")
-        parser.add_argument("--sync", "-s", type=int, default=1, metavar="bpm", help="the bpm of the song (default: 1, if value is less than 1, it sets bpm to 1)")
+        parser.add_argument("--sync", "-s", type=float, default=1, metavar="bpm", help="the bpm of the song (default: 1, if value is less than 1, it sets bpm to 1)")
         parser.add_argument("--offset", "-o", type=int, default=0, metavar="ms", help="the offset of every tick")
         parser.add_argument("--snap", "-sd", type=int, default=1, metavar="snap", help="the snap")
         
