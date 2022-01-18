@@ -22,3 +22,8 @@
 * fixed sync
 * added offset
 * added snap
+
+## v0.2.2
+
+* fixed result being too big
+* --sync will now accept floats

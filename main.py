@@ -19,7 +19,8 @@ tickd = 1
 offset = 0
 
 def get_tick():
-    return (round(player.get_time() / tickd) * tickd) + offset
+    print(player.get_time())
+    return (round(((player.get_time() - offset) if (player.get_time() - offset) >= 0 else 0) / tickd) * tickd) + offset
 
 def p(any):
     global o 
@@ -69,7 +70,7 @@ if __name__ == '__main__':
         music = args.music
         exit_key = args.exit
         bpm = args.sync if args.sync > 0 else 1
-        tickd = 60000/bpm/args.snap
+        tickd = (60000/bpm)/args.snap
         offset = args.offset
         
         print("Click Space to start the song!")
