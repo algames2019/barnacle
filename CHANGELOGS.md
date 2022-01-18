@@ -16,3 +16,9 @@
 * added exit
 * removed unnecessary while loop
 * added sync
+
+## v0.2.1
+
+* fixed sync
+* added offset
+* added snap

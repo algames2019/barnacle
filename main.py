@@ -15,10 +15,11 @@ music = ""
 path = ""
 exit_key = "m"
 running = True
-bpm = 1
+tickd = 1
+offset = 0
 
 def get_tick():
-    return round(player.get_time() / bpm)
+    return (round(player.get_time() / tickd) * tickd) + offset
 
 def p(any):
     global o 
@@ -35,7 +36,7 @@ def click(key):
     global bookmark
     try:
         if key.char in [left, right]:
-            bookmark.append(get_tick()*bpm)
+            bookmark.append(int(get_tick()))
     except AttributeError:
         pass
 
@@ -59,6 +60,8 @@ if __name__ == '__main__':
         parser.add_argument("--right", "-r", type=str, default="s", metavar="key", help="right key (default: s)")
         parser.add_argument("--exit", "-e", type=str, default="m", metavar="key", help="exit key (default: m)")
         parser.add_argument("--sync", "-s", type=int, default=1, metavar="bpm", help="the bpm of the song (default: 1, if value is less than 1, it sets bpm to 1)")
+        parser.add_argument("--offset", "-o", type=int, default=0, metavar="ms", help="the offset of every tick")
+        parser.add_argument("--snap", "-sd", type=int, default=1, metavar="snap", help="the snap")
         
         args = parser.parse_args()
         left = args.left
@@ -66,6 +69,8 @@ if __name__ == '__main__':
         music = args.music
         exit_key = args.exit
         bpm = args.sync if args.sync > 0 else 1
+        tickd = round(60000/bpm)/args.snap
+        offset = args.offset
         
         print("Click Space to start the song!")
         with k.Listener(on_press=click, on_release=release) as listener:
