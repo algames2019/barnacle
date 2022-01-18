@@ -4,6 +4,7 @@ from pynput import keyboard as k
 from vlc import MediaPlayer as mp
 from argparse import ArgumentParser as ap
 
+barnacle = 1
 player = mp()
 left = "a"
 right = "s"
