@@ -9,3 +9,10 @@
 * added CHANGELOGS.md
 * updated README.md
 * fixed commit messages
+
+## v0.2.0
+
+* fixed help
+* added exit
+* removed unnecessary while loop
+* added sync

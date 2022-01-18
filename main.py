@@ -13,6 +13,12 @@ o = ""
 is_playing = False
 music = ""
 path = ""
+exit_key = "m"
+running = True
+bpm = 1
+
+def get_tick():
+    return round(player.get_time() / bpm)
 
 def p(any):
     global o 
@@ -29,35 +35,44 @@ def click(key):
     global bookmark
     try:
         if key.char in [left, right]:
-            bookmark.append(player.get_time())
+            bookmark.append(get_tick()*bpm)
     except AttributeError:
         pass
 
 def release(key):
-    global is_playing
+    global is_playing, running
     if key == k.Key.space and is_playing == False:
             p("Starting Music")
             is_playing = True
             play(music)
+    try:
+        if key.char == exit_key:
+            return False
+    except AttributeError:
+        pass
 
 if __name__ == '__main__':
     try:
-        parser = ap(description="a helpful tool for making bookmarks for osu!")
+        parser = ap(prog="barnacle" ,description="a helpful tool for making bookmarks for osu!")
         parser.add_argument("music", metavar="music", type=str, help="the music to play")
         parser.add_argument("--left", "-l", type=str, metavar="key", default="a", help="left key (default: a)")
         parser.add_argument("--right", "-r", type=str, default="s", metavar="key", help="right key (default: s)")
+        parser.add_argument("--exit", "-e", type=str, default="m", metavar="key", help="exit key (default: m)")
+        parser.add_argument("--sync", "-s", type=int, default=1, metavar="bpm", help="the bpm of the song (default: 1, if value is less than 1, it sets bpm to 1)")
         
         args = parser.parse_args()
         left = args.left
         right = args.right
         music = args.music
+        exit_key = args.exit
+        bpm = args.sync if args.sync > 0 else 1
         
         print("Click Space to start the song!")
         with k.Listener(on_press=click, on_release=release) as listener:
-            listener.join() 
+            listener.join()
         
-        while True:
-            time.sleep(1)      
+        raise KeyboardInterrupt
+             
     except KeyboardInterrupt:
-        p("Result: " + (",".join(str(e) for e in bookmark)))
+        p("Bookmarks: " + (",".join(str(e) for e in bookmark)))
         
