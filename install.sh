@@ -6,6 +6,7 @@ then
     exit
 fi
 
+
 mkdir $HOME/.local/share/barnacle
 cp main.py $HOME/.local/share/barnacle
 sudo cp barnacle /bin
