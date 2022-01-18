@@ -2,32 +2,39 @@
 
 A helpful tool for making bookmarks for osu!.
 
-## **Usage**
+## Usage
 
-`barnacle [-h] main.py [-h] [--left key] [--right key] music`
+~~~
+barnacle [-h] main.py [-h] [--left key] [--right key] music
+~~~
 
-## **Arguments**
+## Arguments
 
-### **Positional Arguments**
+### Positional Arguments
 
+~~~
 music - the music to play
+~~~
 
-### **Optional Arguments**
+### Optional Arguments
 
--h, --help - show help
+~~~
+-h, --help              show help
+--left key, -l key      left key (default: a)
+--right key, -r key     right key (default: s)
+~~~
 
---left key, -l key - left key (default: a)
+## Installation
 
---right key, -r key - right key (default: s)
+~~~
+git clone https://github.com/algames2019/barnacle.git
+cd barnacle
+~~~
 
-## **Installation**
-
-`git clone https://github.com/algames2019/barnacle.git`
-
-`cd barnacle`
-
-### **Bash**
+### Bash
 
 Do not use with `su` or `sudo`! It can cause many problems.
 
-`./install.sh`
+~~~
+./install.sh
+~~~
