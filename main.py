@@ -69,7 +69,7 @@ if __name__ == '__main__':
         music = args.music
         exit_key = args.exit
         bpm = args.sync if args.sync > 0 else 1
-        tickd = round(60000/bpm)/args.snap
+        tickd = 60000/bpm/args.snap
         offset = args.offset
         
         print("Click Space to start the song!")
