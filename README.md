@@ -31,7 +31,7 @@ music - the music to play
 ## Installation
 
 ~~~ bash
-git clone https://github.com/algames2019/barnacle.git
+git clone https://github.com/nanashi-1/barnacle.git
 cd barnacle
 ~~~
 
